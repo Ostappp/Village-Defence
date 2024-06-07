@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -60,10 +59,11 @@ public static class PlayGrid
         pos = new Vector3(buildingSpots[0].transform.localPosition.x + buildingSpots[^1].transform.localPosition.x, 
             0, buildingSpots[0].transform.localPosition.z + buildingSpots[^1].transform.localPosition.z) / 2f;
         
-        //зсув обєктів до лівого нижнього кута
+        //зсув обєктів до лівого нижнього кута та застосування скрипта до них
         foreach (var buildingSpot in buildingSpots)
         {
             buildingSpot.transform.localPosition -= pos;
+            buildingSpot.AddComponent<BuildingSpot>();
         }
         return plane;
     }

@@ -86,3 +86,19 @@ public class SerializableDictionaryDrawer : PropertyDrawer
 #endif
 
 #endregion SerializableDictionary
+
+
+[CustomEditor(typeof(PlayerCtrls))]
+public class ButtonEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        PlayerCtrls script = (PlayerCtrls)target;
+        if (GUILayout.Button("Change camera transform"))
+        {
+            script.SetCameraData();
+        }
+    }
+}
