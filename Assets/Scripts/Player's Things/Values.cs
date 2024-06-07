@@ -1,10 +1,38 @@
-using System.Collections;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 using UnityEngine;
 
 public class Values
 {
-    [System.Serializable]
+    public static string GetResourceAmount(IEnumerable<Resource> resources, bool writeZeroValues = false)
+    {
+        StringBuilder sb = new();
+        foreach (ResourceType resType in Enum.GetValues(typeof(ResourceType)))
+        {
+            var resCount = resources.Where(r => r.GetType == resType).Sum(r => r.GetCount);
+            if (resCount > 0 || (writeZeroValues && resCount == 0))
+            {
+                sb.AppendLine($"{resType}: x{resCount}");
+            }
+        }
+
+        return sb.ToString();
+    }
+
+    public static IEnumerable<Resource> SummarizeResources(IEnumerable<Resource> resources)
+    {
+        List<Resource> result = new();
+        foreach (ResourceType resType in Enum.GetValues(typeof(ResourceType)))
+        {
+            var resCount = resources.Where(r => r.GetType == resType).Sum(r => r.GetCount);
+            result.Add(new Resource(resType, (uint)resCount));
+        }
+
+        return result;
+    }
+    [Serializable]
     public struct Resource
     {
         [SerializeField] private ResourceType Type;
@@ -39,8 +67,9 @@ public class Values
                 return Count;
             }
         }
+
     }
-    [System.Serializable]
+    [Serializable]
     public enum ResourceType
     {
         Water,
