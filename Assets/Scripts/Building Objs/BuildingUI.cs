@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class BuildingUI : MonoBehaviour
 {
-    [Header("UI")]
+    [Header("Structure UI")]
     [SerializeField]
     private GameObject _closeButton;
     [SerializeField]
@@ -12,10 +12,8 @@ public class BuildingUI : MonoBehaviour
     [SerializeField]
     private InteractionBtns _interactionBtns;
     [SerializeField]
-    private SubmitChnagesUI _submitChanges;
+    private SubmitChnagesUI _submitChanges;    
 
-    [Header("Structure")]
-    [SerializeField]
     private Structure _structure;
 
     private SubmitWindowType _submitWindowType;
@@ -125,6 +123,8 @@ public class BuildingUI : MonoBehaviour
         public GameObject Panel;
         public TMP_Text Description;
     }
+
+    
 
     private enum SubmitWindowType
     {

@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class Values
 {
-    public static string GetResourceAmount(IEnumerable<Resource> resources, bool writeZeroValues = false)
+    public static string GetResourceAmount(IEnumerable<Resource> resources, bool writeZeroValues = false, string prefix = "")
     {
         StringBuilder sb = new();
         foreach (ResourceType resType in Enum.GetValues(typeof(ResourceType)))
@@ -14,7 +14,7 @@ public class Values
             var resCount = resources.Where(r => r.GetType == resType).Sum(r => r.GetCount);
             if (resCount > 0 || (writeZeroValues && resCount == 0))
             {
-                sb.AppendLine($"{resType}: x{resCount}");
+                sb.AppendLine($"{prefix}{resType}: x{resCount}");
             }
         }
 

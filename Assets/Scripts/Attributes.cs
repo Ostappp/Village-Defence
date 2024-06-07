@@ -63,31 +63,6 @@ public class SelectDrawer : PropertyDrawer
 
 #endregion SelectAttribute
 
-#region SerializableDictionary
-public class SerializableDictionaryAttribute : PropertyAttribute
-{
-}
-
-
-#if UNITY_EDITOR
-[CustomPropertyDrawer(typeof(SerializableDictionaryAttribute))]
-public class SerializableDictionaryDrawer : PropertyDrawer
-{
-    public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
-    {
-        EditorGUI.BeginProperty(position, label, property);
-
-        // Реалізуйте власну логіку відображення тут
-
-        EditorGUI.EndProperty();
-    }
-
-}
-#endif
-
-#endregion SerializableDictionary
-
-
 [CustomEditor(typeof(PlayerCtrls))]
 public class ButtonEditor : Editor
 {

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using static Values;
 
@@ -8,13 +9,15 @@ public class Structure : ScriptableObject
     [Header("Params")]
     [SerializeField] private string _name;
     [SerializeField] private StructureType _type;
-    [SerializeField] private GameObject _model;
+    [SerializeField] private GameObject _prefab;
+    [SerializeField] private Vector2Int _requiredPlace;
 
     [Header("Pricing")]
     [SerializeField] private List<Resource> _price;
     [SerializeField] private List<Resource> _resourcesAfterDestruction;
 
     [Header("Description")]
+    [SerializeField] private Texture _image;
     [SerializeField, TextArea] private string _description;
 
     [Header("Upgrading")]
@@ -23,11 +26,14 @@ public class Structure : ScriptableObject
 
     public string GetName { get => _name; }
     public new StructureType GetType { get => _type; }
-    public GameObject GetModel { get => _model; }
+    public GameObject GetPrefab { get => _prefab; }
     public IEnumerable<Resource> GetPrice { get => SummarizeResources(_price); }
     public IEnumerable<Resource> GetDestructionCompensation { get => SummarizeResources(_resourcesAfterDestruction); }
+    public Texture GetTexture { get => _image == null ? GenerateTexture() : _image; }
     public string GetDescription { get => _description; }
     public Structure GetUpgradeData { get => _nextUpgrade; }
+
+    private Texture GenerateTexture() => AssetPreview.GetAssetPreview(_prefab);
 
     [System.Serializable]
     public enum StructureType

@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -6,10 +5,19 @@ using UnityEngine.EventSystems;
 public class BuildingSpot : MonoBehaviour, IBuildingObj
 {
     private SpotState _spotState;
+    private Structure _structure;
+    private BuildingSpot _mainSpot;
+
+    [SerializeField]
+    private List<Structure> _firstLvlBuilds;
+    [SerializeField] 
+    private BuildingUI _buildingUIPrefab;
     
     public void ClearSpot()
     {
         _spotState = SpotState.Empty;
+        _structure = null;
+        _mainSpot = null;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -30,12 +38,12 @@ public class BuildingSpot : MonoBehaviour, IBuildingObj
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        throw new System.NotImplementedException();
+
     }
 
     public enum SpotState
