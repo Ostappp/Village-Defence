@@ -425,7 +425,9 @@ MonoBehaviour:
     Content: {fileID: 2881326876786947110}
     ContentElement: {fileID: 8258960959076456625, guid: 10905d60b2b4c954b9715769cb92d702,
       type: 3}
-  _lowLvlStructures: []
+  _lowLvlStructures:
+  - {fileID: 11400000, guid: a7f50b7d9c3d66449b72672cf028d49e, type: 2}
+  - {fileID: 11400000, guid: a4de2f2bf0e68c942b696518ec1d4149, type: 2}
 --- !u!1 &2881326876786947110
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,8 +12,9 @@ public class BuildingUI : MonoBehaviour
     [SerializeField]
     private InteractionBtns _interactionBtns;
     [SerializeField]
-    private SubmitChnagesUI _submitChanges;    
+    private SubmitChnagesUI _submitChanges;
 
+    private Building _building;
     private Structure _structure;
 
     private SubmitWindowType _submitWindowType;
@@ -37,6 +38,8 @@ public class BuildingUI : MonoBehaviour
         _interactionBtns.Panel.SetActive(true);
         _submitChanges.Panel.SetActive(false);
 
+        _building = GetComponentInParent<Building>();
+
         _submitWindowType = SubmitWindowType.None;
     }
 
@@ -48,7 +51,7 @@ public class BuildingUI : MonoBehaviour
 
     public void PressCloseButton()
     {
-        Destroy(this);
+        Destroy(gameObject);
     }
 
     public void PressInfoBtn()
@@ -98,11 +101,11 @@ public class BuildingUI : MonoBehaviour
             PressBackButton();
         else if (_submitWindowType == SubmitWindowType.Upgrade)
         {
-            // upgrade object
+            _building.UpgradeStructure(_structure.GetUpgradeData);
         }
         else
         {
-            // destroy object
+            _building.DestroyStructure();
         }
 
         _submitWindowType = SubmitWindowType.None;

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de04fd3d8fc102f488250e2cbec2eeba, type: 3}
+  m_Name: StoneHouse
+  m_EditorClassIdentifier: 
+  _name: Stone House
+  _type: 1
+  _prefab: {fileID: 100000, guid: de56bad3c5656b74d8cc92d71dee9f62, type: 3}
+  _requiredPlace: {x: 1, y: 2}
+  _price: []
+  _resourcesAfterDestruction: []
+  _image: {fileID: 2800000, guid: 2c4ae1a8682b1e54281b76bed4aac380, type: 3}
+  _description: Adwanced house made of stone
+  _nextUpgrade: {fileID: 0}
+  _structureUI: {fileID: 1291709327532309345, guid: 5b4d6c5d8fa3660489199f4ed35c8825,
+    type: 3}

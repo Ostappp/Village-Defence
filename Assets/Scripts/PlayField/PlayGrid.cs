@@ -7,13 +7,13 @@ public static class PlayGrid
     public const int BUILDING_SPOT_SIZE = 2;
 
 
-    public static GameObject GenerateGrid(Vector3 pos, int gridSize)
+    public static GameObject GenerateGrid(Vector3 pos, int gridSize, LayerMask layer)
     {
         //Створення площини
         GameObject plane = GeneratePlane(pos, gridSize);
 
         //Розміщення будівельних блоків
-        plane = SetBuildingSpots(plane, gridSize);
+        plane = SetBuildingSpots(plane, gridSize, layer);
 
         return plane;
     }
@@ -30,7 +30,7 @@ public static class PlayGrid
 
         return plane;
     }
-    private static GameObject SetBuildingSpots(GameObject plane, int gridSize)
+    private static GameObject SetBuildingSpots(GameObject plane, int gridSize, LayerMask layer)
     {
         //Початкова позиція
         Vector3 pos = new(BUILDING_SPOT_SIZE / 2f, 0, BUILDING_SPOT_SIZE / 2f);
@@ -51,6 +51,14 @@ public static class PlayGrid
 
                 // Задання батьківського обєкта
                 buildingSpot.transform.SetParent(plane.transform, true);
+
+                // Перетворення LayerMask на номер шару
+                int layerNumber = layer.value == -1 ? 0 : (int)Mathf.Log(layer.value, 2);
+
+                // Тепер можна безпечно присвоїти номер шару
+                buildingSpot.layer = layerNumber;
+
+
                 buildingSpots.Add(buildingSpot); 
             }
             

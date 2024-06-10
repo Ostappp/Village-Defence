@@ -22,7 +22,8 @@ public class BuildingSpotUI : MonoBehaviour
 
     public void BuildStructure(Structure structure)
     {
-
+        BuildingSpot spot = GetComponentInParent<BuildingSpot>();
+        spot.BuildStructure(structure);
     }
 
     private void DisplayStructures()
@@ -31,7 +32,7 @@ public class BuildingSpotUI : MonoBehaviour
         {
             GameObject contentElement = Instantiate(_buildingSpotBtns.ContentElement);
             contentElement.transform.SetParent(_buildingSpotBtns.Content.transform);
-            contentElement.GetComponent<BuildElementUI>().SetBuildingUIData(null, structure.GetName, structure.GetDescription, structure.GetPrice);
+            contentElement.GetComponent<BuildElementUI>().SetBuildingUIData(structure.GetTexture, structure.GetName, structure.GetDescription, structure.GetPrice);
 
             var btn = contentElement.GetComponent<Button>();
             btn.onClick.AddListener(PressCloseBtn);

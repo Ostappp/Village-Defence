@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de04fd3d8fc102f488250e2cbec2eeba, type: 3}
+  m_Name: TimberHouse
+  m_EditorClassIdentifier: 
+  _name: Timber House
+  _type: 1
+  _prefab: {fileID: 100000, guid: 304620c2a96ce1043bc12531ed0125d2, type: 3}
+  _requiredPlace: {x: 1, y: 2}
+  _price: []
+  _resourcesAfterDestruction: []
+  _image: {fileID: 2800000, guid: 84759b9d570d8b44d96970c65d175a3a, type: 3}
+  _description: 'The cheapest house '
+  _nextUpgrade: {fileID: 11400000, guid: e1b0d683c7da4ea47b8e5349d68cb797, type: 2}
+  _structureUI: {fileID: 1291709327532309345, guid: 5b4d6c5d8fa3660489199f4ed35c8825,
+    type: 3}

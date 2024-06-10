@@ -23,15 +23,19 @@ public class Structure : ScriptableObject
     [Header("Upgrading")]
     [SerializeField] private Structure _nextUpgrade;
 
+    [Header("UI")]
+    [SerializeField] private GameObject _structureUI;
 
     public string GetName { get => _name; }
     public new StructureType GetType { get => _type; }
     public GameObject GetPrefab { get => _prefab; }
+    public Vector2Int GetStructureSize { get => _requiredPlace; }
     public IEnumerable<Resource> GetPrice { get => SummarizeResources(_price); }
     public IEnumerable<Resource> GetDestructionCompensation { get => SummarizeResources(_resourcesAfterDestruction); }
     public Texture GetTexture { get => _image == null ? GenerateTexture() : _image; }
     public string GetDescription { get => _description; }
     public Structure GetUpgradeData { get => _nextUpgrade; }
+    public GameObject GetUIPrefab { get => _structureUI; }
 
     private Texture GenerateTexture() => AssetPreview.GetAssetPreview(_prefab);
 
